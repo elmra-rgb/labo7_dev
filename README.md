@@ -8,10 +8,11 @@ Une application Android complète permettant d'afficher une galerie de célébri
 
 <div align="center">
   
-<video width="300" controls>
-  <source src="https://raw.githubusercontent.com/elmra-rgb/labo7_dev/main/screens/demo.mp4" type="video/mp4">
-  Votre navigateur ne supporte pas la lecture vidéo.
-</video>
+### Démo de l'application (00:32)
+
+[![Aperçu de l'application](screens/pic1.png)](https://github.com/elmra-rgb/labo7_dev/blob/main/screens/demo.mp4)
+
+**▶️ Cliquez sur l'image pour voir la vidéo**
 
 </div>
 
