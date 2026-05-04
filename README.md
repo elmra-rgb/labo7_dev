@@ -10,7 +10,7 @@ Une application Android complète permettant d'afficher une galerie de célébri
   
 ### Démo de l'application (00:32)
 
-[![Voir la démo](screens/pic1.png)](https://streamable.com/votre_lien)
+[![Voir la démo](screens/pic1.png)](https://streamable.com/ug7yh3)
 
 **Cliquez sur l'image pour voir la démo en ligne**
 
