@@ -10,12 +10,11 @@ Une application Android complète permettant d'afficher une galerie de célébri
   
 ### Démo de l'application (00:32)
 
-[![Aperçu de l'application](screens/pic1.png)](https://github.com/elmra-rgb/labo7_dev/blob/main/screens/demo.mp4)
+[![Voir la démo](screens/pic1.png)](https://streamable.com/votre_lien)
 
-**▶️ Cliquez sur l'image pour voir la vidéo**
+**Cliquez sur l'image pour voir la démo en ligne**
 
 </div>
-
 ## 📱 Captures d'écran
 
 | Écran Initial | Étoiles avant modification | Étoiles après modification |
