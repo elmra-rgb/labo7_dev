@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/celebrityImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/celebrityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/celebrityImage"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/celebrityName"
+        android:layout_toEndOf="@id/celebrityImage"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="0.1"
+        android:isIndicator="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:progressTint="@color/star_yellow"
+        android:progressBackgroundTint="@color/star_gray" />
+
+    <TextView
+        android:id="@+id/celebrityId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ratingBar"
+        android:layout_toEndOf="@id/celebrityImage"
+        android:textSize="12sp"
+        android:textColor="#999999"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
