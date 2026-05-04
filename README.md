@@ -19,7 +19,6 @@ Une application Android complète permettant d'afficher une galerie de célébri
 - **Filtrage dynamique** : barre de recherche (SearchView) pour filtrer par nom en temps réel
 - **Modification des notes** : popup personnalisé pour ajuster la note (RatingBar) d'une célébrité
 - **Menu de partage** : partage de l'application via les applications installées
-- **Animation des étoiles** : étoiles jaunes pour une meilleure expérience visuelle
 
 ## Architecture du projet
 
