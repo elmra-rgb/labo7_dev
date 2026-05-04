@@ -1,8 +1,31 @@
+Voici le fichier README complet avec l'espace pour la vidéo démo :
+
+---
+
 # LAB 7 – Galerie de Stars : RecyclerView, Animations et Filtrage ⭐
 
 ## Aperçu de l'application
 
 Une application Android complète permettant d'afficher une galerie de célébrités sous forme de liste avec images, notes (RatingBar), filtrage dynamique par nom, animations d'introduction, modification des notes via popup et partage de l'application.
+
+## 🎥 Vidéo de démonstration
+
+<div align="center">
+  
+### Démo de l'application 
+
+https://github.com/user-attachments/assets/demo
+
+> **Remarque** : La vidéo de démonstration montre le fonctionnement complet de l'application :
+> - Animation du splash screen
+> - Affichage de la liste des célébrités
+> - Filtrage dynamique via la barre de recherche
+> - Modification des notes via popup
+> - Menu de partage de l'application
+
+</div>
+
+## 📱 Captures d'écran
 
 | Écran Initial | Étoiles avant modification | Étoiles après modification |
 |---------------|---------------------------|----------------------------|
@@ -12,7 +35,7 @@ Une application Android complète permettant d'afficher une galerie de célébri
 |---------------------|-----------------|
 | <img src="screens/pic5.png" width="200"> | <img src="screens/pic6.png" width="200"> |
 
-## Fonctionnalités
+## ✨ Fonctionnalités
 
 - **Splash Screen animé** : logo avec animations de rotation, réduction, translation et disparition progressive
 - **Liste verticale (RecyclerView)** : affichage des célébrités avec photos et notes (étoiles jaunes)
@@ -20,7 +43,7 @@ Une application Android complète permettant d'afficher une galerie de célébri
 - **Modification des notes** : popup personnalisé pour ajuster la note (RatingBar) d'une célébrité
 - **Menu de partage** : partage de l'application via les applications installées (WhatsApp, Gmail, Messages, etc.)
 
-## Architecture du projet
+## 🏗️ Architecture du projet
 
 ```
 lab7_dev/
@@ -49,6 +72,7 @@ lab7_dev/
 │       │   ├── colors.xml
 │       │   └── styles.xml
 │       └── drawable/
+│           ├── logo.png
 │           ├── emma_watson.jpg
 │           ├── tom_cruise.jpg
 │           ├── elle_fanning.jpg
@@ -61,7 +85,7 @@ lab7_dev/
 │           └── monica_belluci.jpg
 ```
 
-## Code source complet
+## 💻 Code source complet
 
 ### 1. Dépendances – `build.gradle.kts` (Module: app)
 
@@ -238,8 +262,8 @@ public class CelebrityManager implements IGenericDao<Celebrity> {
         android:id="@+id/appLogo"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:scaleType="centerCrop"
+        android:src="@drawable/logo"
+        android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -253,35 +277,59 @@ public class CelebrityManager implements IGenericDao<Celebrity> {
 ```java
 package com.example.lab7_dev.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.lab7_dev.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private ImageView appLogo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         
-        appLogo = findViewById(R.id.appLogo);
+        ImageView appLogo = findViewById(R.id.appLogo);
         
-        // Animations successives
-        appLogo.animate().rotation(360f).setDuration(2000).start();
-        appLogo.animate().scaleX(0.5f).scaleY(0.5f).setDuration(3000).start();
-        appLogo.animate().translationY(1000f).setDuration(2000).start();
-        appLogo.animate().alpha(0f).setDuration(6000).start();
+        // Animation de rotation
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(appLogo, "rotation", 0f, 360f);
+        rotation.setDuration(2000);
         
-        // Redirection après 5 secondes
-        new Handler().postDelayed(() -> {
+        // Animation de réduction (Scale X et Y)
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(appLogo, "scaleX", 1f, 0.5f);
+        scaleX.setDuration(3000);
+        scaleX.setStartDelay(500);
+        
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(appLogo, "scaleY", 1f, 0.5f);
+        scaleY.setDuration(3000);
+        scaleY.setStartDelay(500);
+        
+        // Animation de translation vers le bas
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(appLogo, "translationY", 0f, 1000f);
+        translationY.setDuration(2000);
+        translationY.setStartDelay(2000);
+        
+        // Animation de disparition (Alpha)
+        ObjectAnimator alpha = ObjectAnimator.ofFloat(appLogo, "alpha", 1f, 0f);
+        alpha.setDuration(1500);
+        alpha.setStartDelay(3500);
+        
+        // Grouper toutes les animations
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(rotation, scaleX, scaleY, translationY, alpha);
+        animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorSet.start();
+        
+        // Redirection vers l'activité principale après 5.5 secondes
+        appLogo.postDelayed(() -> {
             startActivity(new Intent(SplashScreenActivity.this, MainListActivity.class));
             finish();
-        }, 5000);
+        }, 5500);
     }
 }
 ```
@@ -641,7 +689,7 @@ public class MainListActivity extends AppCompatActivity {
 </menu>
 ```
 
-## Comment exécuter l'application
+## 🚀 Comment exécuter l'application
 
 1. **Créer un projet** Android Studio avec "Empty Views Activity"
 2. **Nom du projet** : `lab7_dev`
@@ -649,36 +697,29 @@ public class MainListActivity extends AppCompatActivity {
 4. **Langage** : Java
 5. **API minimum** : 24 (Android 7.0)
 6. **Ajouter les dépendances** dans `build.gradle.kts`
-7. **Ajouter les images** des célébrités dans `res/drawable/`
-8. **Remplacer tous les fichiers** par les codes ci-dessus
-9. **Compiler** et exécuter sur émulateur ou appareil physique
+7. **Ajouter le logo** `logo.png` dans `res/drawable/`
+8. **Ajouter les images** des célébrités dans `res/drawable/`
+9. **Remplacer tous les fichiers** par les codes ci-dessus
+10. **Compiler** et exécuter sur émulateur ou appareil physique
 
-## Fonctionnement
+## 📊 Fonctionnement
 
 | Action | Résultat |
 |--------|----------|
-| Lancement de l'app | Splash screen animé pendant 5 secondes |
+| Lancement de l'app | Splash screen animé (rotation, réduction, translation, disparition) |
 | Saisie dans la barre de recherche (pic5) | Filtrage dynamique de la liste par nom |
 | Clic sur une célébrité | Ouverture d'un popup pour modifier la note |
 | Validation de la nouvelle note | Mise à jour immédiate de l'étoile (pic3) |
 | Clic sur l'icône de partage (pic6) | Choix de l'application de partage (WhatsApp, Gmail, etc.) |
 
-## Captures d'écran
 
-| Pic | Description |
-|-----|-------------|
-| pic1.png | Écran principal avec la liste complète des célébrités |
-| pic2.png | Affichage des étoiles avant modification |
-| pic3.png | Affichage des étoiles après modification |
-| pic5.png | Barre de recherche active avec filtrage dynamique |
-| pic6.png | Menu de partage avec choix des applications |
-
-## Points techniques abordés
+## 🎓 Points techniques abordés
 
 - **RecyclerView & ViewHolder** : affichage performant de listes
 - **Adapter personnalisé** : liaison entre données et interface
 - **Filterable interface** : filtrage dynamique avec SearchView (pic5)
 - **Animations** : rotation, translation, scale et alpha pour le splash screen
+- **ObjectAnimator & AnimatorSet** : animations professionnelles
 - **AlertDialog personnalisé** : popup pour modifier les notes
 - **RatingBar** : affichage et modification des étoiles avec couleur jaune
 - **Singleton pattern** : gestion centralisée des données
@@ -687,7 +728,6 @@ public class MainListActivity extends AppCompatActivity {
 - **Images locales** : chargement sans bibliothèques externes
 
 ---
-
 **Auteur** : ELHEZZAM RANIA  
 **Réalisé avec** : Android Studio sur MacOS Apple Silicon M2 (ARM-64 Native)  
-**Date** : Mai 2026
+**Date** : Mai 2026  
