@@ -8,18 +8,15 @@ Une application Android complète permettant d'afficher une galerie de célébri
 
 <div align="center">
   
-### Démo de l'application 
+### Démo de l'application (00:32)
 
-<video src="https://github.com/elmra-rgb/labo7_dev/screens/demo.mov" width="300" controls>
-  Votre navigateur ne supporte pas la lecture vidéo.
-</video>
+<a href="https://github.com/elmra-rgb/labo7_dev/blob/main/screens/demo.mov">
+  <img src="screens/pic1.png" width="250" alt="Aperçu de l'application">
+  <br>
+  <b>▶️ Cliquez ici pour voir la vidéo de démonstration (00:32)</b>
+</a>
 
-> **Remarque** : La vidéo de démonstration montre le fonctionnement complet de l'application :
-> - Animation du splash screen
-> - Affichage de la liste des célébrités
-> - Filtrage dynamique via la barre de recherche
-> - Modification des notes via popup
-> - Menu de partage de l'application
+> **Remarque** : La vidéo de démonstration montre le fonctionnement complet de l'application
 
 </div>
 
