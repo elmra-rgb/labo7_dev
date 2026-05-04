@@ -1,24 +1,24 @@
-Voici le fichier README pour votre LAB 7 :
-
----
-
 # LAB 7 – Galerie de Stars : RecyclerView, Animations et Filtrage ⭐
 
 ## Aperçu de l'application
 
-Une application Android complète permettant d'afficher une galerie de célébrités sous forme de liste avec images, notes (RatingBar), filtrage dynamique par nom, animations d'introduction et modification des notes via popup.
+Une application Android complète permettant d'afficher une galerie de célébrités sous forme de liste avec images, notes (RatingBar), filtrage dynamique par nom, animations d'introduction, modification des notes via popup et partage de l'application.
 
-| Écran Initial | Étoiles avant modification | Étoiles après modification | Liste après modification |
-|---------------|---------------------------|----------------------------|----------------------------|
-| <img src="screens/pic1.png" width="200"> | <img src="screens/pic2.png" width="200"> | <img src="screens/pic3.png" width="200"> | <img src="screens/pic4.png" width="200"> |
+| Écran Initial | Étoiles avant modification | Étoiles après modification |
+|---------------|---------------------------|----------------------------|
+| <img src="screens/pic1.png" width="200"> | <img src="screens/pic2.png" width="200"> | <img src="screens/pic3.png" width="200"> |
+
+| Recherche / Filtrage | Menu de Partage |
+|---------------------|-----------------|
+| <img src="screens/pic5.png" width="200"> | <img src="screens/pic6.png" width="200"> |
 
 ## Fonctionnalités
 
 - **Splash Screen animé** : logo avec animations de rotation, réduction, translation et disparition progressive
-- **Liste verticale (RecyclerView)** : affichage des célébrités avec photos circulaires et notes
+- **Liste verticale (RecyclerView)** : affichage des célébrités avec photos et notes (étoiles jaunes)
 - **Filtrage dynamique** : barre de recherche (SearchView) pour filtrer par nom en temps réel
 - **Modification des notes** : popup personnalisé pour ajuster la note (RatingBar) d'une célébrité
-- **Menu de partage** : partage de l'application via les applications installées
+- **Menu de partage** : partage de l'application via les applications installées (WhatsApp, Gmail, Messages, etc.)
 
 ## Architecture du projet
 
@@ -271,11 +271,13 @@ public class SplashScreenActivity extends AppCompatActivity {
         
         appLogo = findViewById(R.id.appLogo);
         
+        // Animations successives
         appLogo.animate().rotation(360f).setDuration(2000).start();
         appLogo.animate().scaleX(0.5f).scaleY(0.5f).setDuration(3000).start();
         appLogo.animate().translationY(1000f).setDuration(2000).start();
         appLogo.animate().alpha(0f).setDuration(6000).start();
         
+        // Redirection après 5 secondes
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashScreenActivity.this, MainListActivity.class));
             finish();
@@ -450,12 +452,14 @@ public class CelebrityAdapter extends RecyclerView.Adapter<CelebrityAdapter.Cele
         holder.ratingBar.setRating(currentCelebrity.getAverageRating());
         holder.celebrityImage.setImageResource(getImageResource(currentCelebrity.getImageUrl()));
         
+        // Clic pour modifier la note
         holder.itemView.setOnClickListener(v -> {
             View dialogView = LayoutInflater.from(appContext).inflate(R.layout.rating_edit_dialog, null, false);
             
             ImageView dialogImg = dialogView.findViewById(R.id.dialogCelebrityImage);
             RatingBar dialogRating = dialogView.findViewById(R.id.dialogRatingBar);
             TextView dialogName = dialogView.findViewById(R.id.dialogCelebrityName);
+            
             dialogImg.setImageResource(getImageResource(currentCelebrity.getImageUrl()));
             dialogName.setText(currentCelebrity.getFullName());
             dialogRating.setRating(currentCelebrity.getAverageRating());
@@ -654,22 +658,32 @@ public class MainListActivity extends AppCompatActivity {
 | Action | Résultat |
 |--------|----------|
 | Lancement de l'app | Splash screen animé pendant 5 secondes |
-| Saisie dans la barre de recherche | Filtrage dynamique de la liste par nom |
+| Saisie dans la barre de recherche (pic5) | Filtrage dynamique de la liste par nom |
 | Clic sur une célébrité | Ouverture d'un popup pour modifier la note |
 | Validation de la nouvelle note | Mise à jour immédiate de l'étoile (pic3) |
-| Clic sur l'icône de partage | Partage de l'application via les apps installées |
+| Clic sur l'icône de partage (pic6) | Choix de l'application de partage (WhatsApp, Gmail, etc.) |
+
+## Captures d'écran
+
+| Pic | Description |
+|-----|-------------|
+| pic1.png | Écran principal avec la liste complète des célébrités |
+| pic2.png | Affichage des étoiles avant modification |
+| pic3.png | Affichage des étoiles après modification |
+| pic5.png | Barre de recherche active avec filtrage dynamique |
+| pic6.png | Menu de partage avec choix des applications |
 
 ## Points techniques abordés
 
 - **RecyclerView & ViewHolder** : affichage performant de listes
 - **Adapter personnalisé** : liaison entre données et interface
-- **Filterable interface** : filtrage dynamique avec SearchView
+- **Filterable interface** : filtrage dynamique avec SearchView (pic5)
 - **Animations** : rotation, translation, scale et alpha pour le splash screen
 - **AlertDialog personnalisé** : popup pour modifier les notes
 - **RatingBar** : affichage et modification des étoiles avec couleur jaune
 - **Singleton pattern** : gestion centralisée des données
 - **CRUD operations** : Create, Read, Update, Delete via DAO générique
-- **ShareCompat** : partage d'application
+- **ShareCompat** : partage d'application (pic6)
 - **Images locales** : chargement sans bibliothèques externes
 
 ---
