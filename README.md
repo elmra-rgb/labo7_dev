@@ -4,18 +4,13 @@
 
 Une application Android complète permettant d'afficher une galerie de célébrités sous forme de liste avec images, notes (RatingBar), filtrage dynamique par nom, animations d'introduction, modification des notes via popup et partage de l'application.
 
-## 🎥 Vidéo de démonstration
+## 🎥 Démonstration animée
 
 <div align="center">
   
-### Démo de l'application (00:32)
+<img src="screens/demo.gif" width="250" alt="Démo de l'application">
 
-<video width="300" controls>
-  <source src="https://raw.githubusercontent.com/elmra-rgb/labo7_dev/main/screens/demo.mov" type="video/mp4">
-  <source src="https://raw.githubusercontent.com/elmra-rgb/labo7_dev/main/screens/demo.mov" type="video/quicktime">
-  Votre navigateur ne supporte pas la lecture vidéo. 
-  <a href="https://github.com/elmra-rgb/labo7_dev/blob/main/screens/demo.mov">Télécharger la vidéo</a>
-</video>
+**Démo de l'application en action**
 
 </div>
 
