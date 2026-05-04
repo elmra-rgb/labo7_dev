@@ -9,7 +9,7 @@ Voici le fichier README pour votre LAB 7 :
 Une application Android complète permettant d'afficher une galerie de célébrités sous forme de liste avec images, notes (RatingBar), filtrage dynamique par nom, animations d'introduction et modification des notes via popup.
 
 | Écran Initial | Étoiles avant modification | Étoiles après modification | Liste après modification |
-|---------------|---------------------------|----------------------------|
+|---------------|---------------------------|----------------------------|----------------------------|
 | <img src="screens/pic1.png" width="200"> | <img src="screens/pic2.png" width="200"> | <img src="screens/pic3.png" width="200"> | <img src="screens/pic4.png" width="200"> |
 
 ## Fonctionnalités
