@@ -1,7 +1,3 @@
-Voici le fichier README complet avec l'espace pour la vidéo démo :
-
----
-
 # LAB 7 – Galerie de Stars : RecyclerView, Animations et Filtrage ⭐
 
 ## Aperçu de l'application
